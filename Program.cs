@@ -48,10 +48,10 @@ int RandomNum(int min, int max)
 string[] CreateArrayStr(int size, int min, int max)
 {
     string[] array = new string[size];
-    
+    int len = RandomNum(0, 10);
     for (int i = 0; i < size; i++)
     {
-        array[i] = RandomString(size);
+        array[i] = RandomString(len);
     }
     return array;
 }

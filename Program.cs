@@ -11,6 +11,8 @@ string[] FormatingArr(string[] arr)
                 {
                     array[i] = arr[i];
                 }
+                else
+                    array[i] = "";
             }
         return array;
 }
@@ -20,11 +22,13 @@ void PrintArray(string[] array)
     Console.Write("[");
     for (int i = 0; i < array.Length; i++)
     {
-        if (i < array.Length - 1)
-            {
-                Console.Write($"{array[i], 4}| ");
-            }
-        else Console.Write($"{array[i], 4}");
+        if (array[i] != "")
+        {
+            if (i < array.Length - 1) Console.Write($"{array[i], 4}| ");
+            else Console.Write($"{array[i], 4}");
+        }
+        else
+        i++;
     }
     Console.WriteLine("]");
 }

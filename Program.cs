@@ -1,28 +1,33 @@
-﻿Console.WriteLine("Введите количество элементов массива:");
-int num = Convert.ToInt32(Console.ReadLine());
-
+﻿int num = default;
 string[] array = new string[num];
 
-
-
-
-
+// Формирование нового массива, удовлетворяющего условиям
+string[] FormatingArr(string[] arr)
+{
+    string[] array = new string[arr.Length];
+        for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i].Length <= 3)
+                {
+                    array[i] = arr[i];
+                }
+            }
+        return array;
+}
+// Вывод массива в консоль
 void PrintArray(string[] array)
 {
     Console.Write("[");
     for (int i = 0; i < array.Length; i++)
     {
-        if (i < array.Length - 1) Console.Write($"{array[i]}, ");
-        else Console.Write($"{array[i]}");
+        if (i < array.Length - 1)
+            {
+                Console.Write($"{array[i], 4}| ");
+            }
+        else Console.Write($"{array[i], 4}");
     }
     Console.WriteLine("]");
 }
-
-PrintArray(array);
-array = CreateArrayStr(num, RandomNum(0, 5), RandomNum(0,5));
-PrintArray(array);
-
-
 // Генерация случайной строки
 string RandomString(int length)
         {
@@ -32,7 +37,7 @@ string RandomString(int length)
             {
                 do
                     result[i] = (char) r.Next(100); 
-                while (result[i] < '!');
+                while (result[i] < '&');
             }
             return new string(result);
         }
@@ -43,15 +48,21 @@ int RandomNum(int min, int max)
     num = new Random().Next(min, max);
     return num;
 }
-
-
-string[] CreateArrayStr(int size, int min, int max)
-{
-    string[] array = new string[size];
-    int len = RandomNum(0, 10);
-    for (int i = 0; i < size; i++)
+// Создание строкового массива
+string[] CreateArrayStr(int size)
     {
-        array[i] = RandomString(len);
+        string[] array = new string[size];
+        for (int i = 0; i < size; i++)
+            {
+                array[i] = RandomString(RandomNum(1, 11));
+            }
+        return array;
     }
-    return array;
-}
+
+
+string[] OrignArray = CreateArrayStr(RandomNum(5, 11));
+Console.WriteLine("Оригинальный массив:");
+PrintArray(OrignArray);
+string[] FormaArray = FormatingArr(OrignArray);
+Console.WriteLine("Форматированный массив:");
+PrintArray(FormaArray);

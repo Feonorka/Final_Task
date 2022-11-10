@@ -24,11 +24,9 @@ void PrintArray(string[] array)
     {
         if (array[i] != "")
         {
-            if (i < array.Length - 1) Console.Write($"{array[i], 4}| ");
+            if (i < array.Length - 1) Console.Write($"{array[i], 4}, ");
             else Console.Write($"{array[i], 4}");
         }
-        else
-        i++;
     }
     Console.WriteLine("]");
 }
